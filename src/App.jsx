@@ -7,6 +7,7 @@ function App() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,8 @@ function App() {
         }
         setData(await response.json());
       } catch (error) {
-        console.log(error.message);
+        setError(error.message);
+        alert('Failed to fetch data');
       }
     };
     fetchData();
@@ -27,9 +29,7 @@ function App() {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
@@ -49,21 +49,28 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map((employee) => (
-            <TableItem
-              key={employee.id}
-              id={employee.id}
-              name={employee.name}
-              email={employee.email}
-              role={employee.role}
-            />
-          ))}
+          {currentItems.length > 0 ? (
+            currentItems.map((employee) => (
+              <TableItem
+                key={employee.id}
+                id={employee.id}
+                name={employee.name}
+                email={employee.email}
+                role={employee.role}
+              />
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No data available</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <Pagination 
-      currentPage={currentPage}
-      totalPages={totalPages}
-      onPageChange={handlePageChange} />
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
