@@ -16,13 +16,13 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   return (
     <div className={styles.pagination}>
-      <button onClick={handlePrevious} disabled={currentPage === 1}>
+      <button onClick={handlePrevious}>
         Previous
       </button>
       <div className={styles.pageNumber}>
         <span>{currentPage}</span>
       </div>
-      <button onClick={handleNext} disabled={currentPage === totalPages}>
+      <button onClick={handleNext}>
         Next
       </button>
     </div>
