@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pageNumber {
+  display: inline-flex;
+  border-radius: 6px;
+  background-color: #009879;
+  color: white;
+  height: 45px;
+  width: 45px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+button {
+  border-radius: 6px;
+  background-color: #009879;
+  color: white;
+  height: 30px;
+  width:fit-content;
+  padding: 0 15px;
+  border: none;
+}

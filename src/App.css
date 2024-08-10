@@ -1,0 +1,13 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+th {
+  background-color: #009879;
+  color: white;
+  height: 45px;
+  width: 45px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
